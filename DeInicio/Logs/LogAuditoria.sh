@@ -91,7 +91,7 @@ case $op in
 	;;
 	99) # Volver
 		clear
-		sh Inicio.sh
+		sh Init.sh
 	;;
 	*)
 		echo "Error"

@@ -52,29 +52,29 @@ echo -e "
 
 	${CYAN}0${NC} - ${ORANGE}Neofetch
 	${CYAN}1${NC} - ${ORANGE}Apps
-	${CYAN}2${NC} - ${ORANGE}Sistema
-	${CYAN}3${NC} - ${ORANGE}Funcionalidades
-	${CYAN}4${NC} - ${ORANGE}ABM Usuario
-	${CYAN}5${NC} - ${ORANGE}ABM Grupo
-	${CYAN}6${NC} - ${ORANGE}Red
+	${CYAN}2${NC} - ${ORANGE}System
+	${CYAN}3${NC} - ${ORANGE}Funcionalities
+	${CYAN}4${NC} - ${ORANGE}ABM User
+	${CYAN}5${NC} - ${ORANGE}ABM Group
+	${CYAN}6${NC} - ${ORANGE}Network
 
-	${CYAN}99${NC} - ${ORANGE}Salir${NC}
+	${RED}99${NC} - ${ORANGE}Exit${NC}
 "
 
-	read -rp "	Ingrese opción : " op
+	read -rp "	Enter option : " op
 
 case $op in
 	0)
 	 clear
 	 neofetch | lolcat
 	 intro
-	 bash /home/jordan/Scripts/DeInicio/Inicio.sh
+	 bash /home/jordan/Scripts/DeInicio/Init.sh
 	;;
 	1)
 	 findResource Apps.sh
 	;;
 	2)
-	 findResource Sistema.sh
+	 findResource System.sh
 	;;
 	3)
 	 findResource Funcionalidades.sh
@@ -94,8 +94,8 @@ case $op in
 	;;
 	*)
 	 clear
-	 printf "	${RED}Error, por favor introduce una opción correcta.${NC}"
+	 printf "	${RED}Error, please enter a valid option.${NC}"
 	 intro
-	 bash Inicio.sh
+	 bash Init.sh
 	;;
 esac

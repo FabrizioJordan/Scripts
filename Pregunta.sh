@@ -1,19 +1,26 @@
 #!/bin/bash
 
-sleep 2
+echo ""
 
-read -p "	<INTRO>"
-
-read -p "	Quieres iniciar el script Inicio.sh [y/n]" eleccion
-case $eleccion in
+read -p "	Do you want to start the script Neofetch.sh [y/n] " option
+case $option in
 	y)
-	bash /home/jordan/Scripts/DeInicio/Inicio.sh
+	 clear
+
+	 bash $HOME/Scripts/exeNeofetch.sh
+	
+	 echo ""
+	
+	 bash $HOME/Scripts/exeInit.sh
+
+	clear
 	;;
 	n)
-	read -p "	<INTRO>"
+	clear
+	 bash $HOME/Scripts/exeInit.sh
 	clear
 	;;
 	*)
-	bash /home/jordan/Scripts/Pregunta.sh
+	bash $HOME/Scripts/Pregunta.sh
 	;;
 esac

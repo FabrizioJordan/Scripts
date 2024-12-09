@@ -83,7 +83,7 @@ case $op in
 	;;
 	99)
 	 clear
-	 findResource Inicio.sh
+	 findResource Init.sh
 	;;
 	*)
 	 clear

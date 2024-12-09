@@ -133,13 +133,13 @@ case $op in
 	;;
 	99) # volver
 	clear
-	bash ./Inicio.sh
+	bash ./Init.sh
 	;;
 	*)
 	clear
 	printf "	${RED}Error, por favor introduce una opción correcta.${NC}"
 	intro
-	bash ../Inicio.sh
+	bash ../Init.sh
 	;;
 esac
 

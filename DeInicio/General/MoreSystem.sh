@@ -54,19 +54,19 @@ case $op in
 	1)
 	 lsblk -l
 	 intro
-	 bash Sistema.sh
+	 bash System.sh
 	;;
 	2)
 	 lscpu | grep -v "Indicadores"
 	;;
 	99)
 	 clear
-	 bash Sistema.sh
+	 bash System.sh
 	;;
 	*)
 	 clear
 	 printf "	${RED}Error, por favor introduce una opción correcta.${NC}"
 	 intro
-	 bash Sistema.sh
+	 bash System.sh
 	;;
 esac

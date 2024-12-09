@@ -14,17 +14,18 @@ findResource() {
 
     filesOfType=$(locate -ib $file)
     result=$(echo "$filesOfType" | grep "/$file$")
-    # Verificar si se encontró el archivo antes de intentar ejecutarlo
+    # Verify if the file was found before trying to execute it
     if [ -n "$result" ]; then
         bash "$result"
     else
-        echo "	El archivo \"$file\" no se encontró o no se puede leer."
+        echo "	File \"$file\" not found or cannot be read."
     fi
 }
 
 back(){
-	findResource Sistema.sh
+	findResource System.sh
 }
+
 
 
 intro(){
@@ -35,27 +36,29 @@ intro(){
 clear
 
 echo -e "
-	Bienvenido usuario ${ORANGE}$USER${NC} a la modificación del sistema del Centro de Cómputos.
+	Welcome user ${ORANGE}$USER${NC} to the system modification of the Computing Center.
 
-	Ingrese Opción:
+	Enter Option:
 
-	${CYAN}1${NC} - ${ORANGE}Update System (smart way)${NC}
-	${CYAN}2${NC} - ${ORANGE}Delete Obsolete Files (autoremove)${NC}
-	${CYAN}3${NC} - ${ORANGE}Clean Old Configs & Caché (purge and clean)${NC}
-	${CYAN}4${NC} - ${ORANGE}See all of the apt packages installed${NC}
-	${CYAN}5${NC} - ${ORANGE}See all of the flatpak packages installed${NC}
-	${CYAN}6${NC} - ${ORANGE}Show the info of this package in apt${NC}
-	${CYAN}7${NC} - ${ORANGE}See all of tages installed${NC}
-	${CYAN}8${NC} - ${ORANGE}Desplays disk usage of files and dirs in print${NC}
-	${CYAN}9${NC} - ${ORANGE}Desplays visual disk usage of User dir${NC}
-	${CYAN}10${NC} - ${ORANGE}Lists information about all available or specified block devices${NC}
+	${CYAN}0${NC} - ${ORANGE}Update System (smart way)${NC}
+	${CYAN}1${NC} - ${ORANGE}Delete Obsolete Files (autoremove)${NC}
+	${CYAN}2${NC} - ${ORANGE}Clean Old Configs & Caché (purge and clean)${NC}
+	${CYAN}3${NC} - ${ORANGE}See all of the apt packages installed${NC}
+	${CYAN}4${NC} - ${ORANGE}See all of the flatpak packages installed${NC}
+	${CYAN}5${NC} - ${ORANGE}Show the info of this package in apt${NC}
+	${CYAN}6${NC} - ${ORANGE}See all of tages installed${NC}
+	${CYAN}7${NC} - ${ORANGE}Desplays disk usage of files and dirs in print${NC}
+	${CYAN}8${NC} - ${ORANGE}Desplays visual disk usage of User dir${NC}
+	${CYAN}9${NC} - ${ORANGE}Lists information about all available or specified block devices${NC}
 
 
 
-	${CYAN}99${NC} - ${ORANGE}Volver${NC}
+	${CYAN}99${NC} - ${ORANGE}Back${NC}
+
+	${CYAN}Q${NC} - ${ORANGE}Exit${NC}
 "
 
-read -rp "	Ingrese opcion : " op
+read -rp "	Enter Option : " op
 
 case $op in
 	1)
@@ -115,11 +118,15 @@ case $op in
 	;;
 	99)
 	 clear
-	 findResource Inicio.sh
+	 findResource Init.sh
+	;;
+	Q)
+	 clear
+	 exit
 	;;
 	*)
 	 clear
-	 printf "	${RED}Error, por favor introduce una opción correcta.${NC}"
+	 printf "	${RED}Error, please enter a valid option.${NC}"
 	 intro
 	 back
 	;;
