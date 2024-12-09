@@ -1,0 +1,10 @@
+#	Estos son los tipos de logs que existen en este Centro de Computos
+
+#	1- ABM_Usuario
+#		Viene del archivo ABM_usuario.sh , el cual modifica, lee, elimina y crea usuarios del sistema.
+
+
+#	1- ABM_Grupo
+#		Viene del archivo ABM_grupo.sh , el cual modifica, lee, elimina y crea grupos del sistema.
+
+# Fin

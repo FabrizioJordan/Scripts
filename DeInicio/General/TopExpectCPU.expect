@@ -1,0 +1,10 @@
+#!/usr/bin/expect
+
+spawn top -n30 -d5 -e g -o %CPU 
+expect "top"
+send "b"
+expect "top"
+send "x"
+expect "top"
+send "j"
+interact
