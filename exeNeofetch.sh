@@ -2,4 +2,4 @@
 
 neofetch | lolcat
 
-batcat -p --theme=base16 /home/jordan/Scripts/myAlias.txt
+batcat -p --theme=base16 $HOME/Scripts/myAlias.txt
