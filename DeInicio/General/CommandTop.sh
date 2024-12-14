@@ -23,7 +23,7 @@ findResource() {
     if [ -n "$result" ]; then
         bash "$result"
     else
-        echo "El archivo \"$file\" no se encontró o no se puede leer."
+        echo "The file \"$file\" was not found or could not be read."
     fi
 }
 
@@ -45,18 +45,21 @@ clear
 
 clear
 echo -e "
-	Bienvenido Usuario ${ORANGE}$USER${NC} al centro del comamanto top.
+ 	Welcome User ${ORANGE}$USER${NC} to the computing top center.
 
-    	Usted tiene las siguientes opciones:
+    	You have the following options:
 
-	${CYAN}1${NC} - ${ORANGE}Ver top por %CPU${NC}
-	${CYAN}2${NC} - ${ORANGE}Ver top por %MEM${NC}
+	${CYAN}1${NC} - ${ORANGE}See top for %CPU${NC}
+	${CYAN}2${NC} - ${ORANGE}See top for %MEM${NC}
 
-	${CYAN}99${NC} - ${ORANGE}Volver${NC}
+	${CYAN}99${NC} - ${ORANGE}Back${NC}
+
+	${RED}Q${NC} - ${ORANGE}Exit${NC}
 
 "
 
-read -p "	Opción: " op
+read -rp " 	Enter option : " op
+
 case $op in
 	1)
 	 clear
@@ -75,6 +78,9 @@ case $op in
 	 inicio
 	 bash Funcionalidades.sh
 	;;
+	Q)
+	 clear
+	 exit
 	*)
 	 clear
 	 printf "	${RED}Error, por favor introduce una opción correcta${NC}\n"

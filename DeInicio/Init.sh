@@ -40,15 +40,15 @@ findResource() {
 }
 
 
-cd /home/jordan/Scripts/DeInicio
+cd $HOME/Scripts/DeInicio
 
 clear
 
 echo -e "
 
-	Bienvenido Usuario ${ORANGE}$USER${NC} al centro de computos.
+	Welcome User ${ORANGE}$USER${NC} to the computing center.
 
-    	Usted tiene las siguientes opciones:
+		You have the following options:
 
 	${CYAN}0${NC} - ${ORANGE}Neofetch
 	${CYAN}1${NC} - ${ORANGE}Apps
@@ -66,9 +66,9 @@ echo -e "
 case $op in
 	0)
 	 clear
-	 neofetch | lolcat
+	 ../exeNeofetch.sh
 	 intro
-	 bash /home/jordan/Scripts/DeInicio/Init.sh
+	 bash $HOME/Scripts/DeInicio/Init.sh
 	;;
 	1)
 	 findResource Apps.sh
@@ -89,7 +89,7 @@ case $op in
 	 bash ./General/Red.sh
 	;;
 	99)
-	 cd /home/jordan/
+	 cd $HOME
 	 clear
 	;;
 	*)

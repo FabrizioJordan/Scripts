@@ -1,5 +1,7 @@
 # Scripts
-Mis scripts personales
+
+
+## Mis scripts personales
 
 Si los querés probar:
 
@@ -13,9 +15,14 @@ Si los querés probar:
 
 Listo!!
 
+
 Para recordar:
 
-Iniciando.sh es el script principal.
+Los scripts cada día los paso al inglés.
+
+Iniciando.sh es el script principal a ejecutar.
+
+/DeInicio/Init.sh es el script general que permite ejecutar al resto.
 
 colors.txt contiene los colores utilizados y/o por utilizar.
 
