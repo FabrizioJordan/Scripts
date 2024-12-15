@@ -14,16 +14,21 @@ findResource() {
     local file="$1"
 	local USER_HOME="$HOME"
 
-    local fileType="$(echo "$file" | grep -oE '\.[^.]+$' | sed 's/\.//')"
+    #local fileType="$(echo "$file" | grep -oE '\.[^.]+$' | sed 's/\.//')"
     # Buscar archivos del mismo tipo que el archivo buscado
-    filesOfType=$(find "$USER_HOME" -type f -name "*.$fileType" 2>/dev/null)
+    #filesOfType=$(find "$USER_HOME" -type f -name "*.$fileType" 2>/dev/null)
     # Buscar el archivo específico dentro de la lista de archivos del mismo tipo
-    result=$(echo "$filesOfType" | grep "/$file$")
+    #result=$(echo "$filesOfType" | grep "/$file$")
+
+		# with locate command (fast way)
+	filesOfType=$(locate -ib $file)
+	result=$(echo "$filesOfType" | grep "/$file$")
+
     # Verificar si se encontró el archivo antes de intentar ejecutarlo
     if [ -n "$result" ]; then
         bash "$result"
     else
-        echo "El archivo \"$file\" no se encontró o no se puede leer."
+        echo "The file \"$file\" was not found or could not be read."
     fi
 }
 
@@ -33,25 +38,25 @@ intro(){
 	read -rp "	<INTRO>"
 }
 
-iniciarScript(){
-	bash Red.sh
+initCurrentScript(){
+	sh Red.sh || findResource Red.sh
 }
 
-pingear(){
-	read -rp "Introduzca ip o dirección a pingear: " ip
+pingFunc(){
+	read -rp "	Enter IP or address to ping : " ip
 	ping $ip
 }
 
 curlDir(){
-	read -rp "Introduzca la direccion para hacerle curl: " direccion
-	curl $direccion
+	read -rp "	Enter the address to curl : " direction
+	curl $direction
 }
 
-verInterfaces(){
+interfaces(){
 	netstat -i
 }
 
-verNetstat(){
+seeNetstat(){
 	netstat -natu
 }
 
@@ -70,76 +75,76 @@ seeRoute(){
 
 # Inicio
 
-
-			# Inicia
-
 clear
 
 
-echo -e "
+echo "
 
-	Bienvenido Usuario ${ORANGE}$USER${NC} al Centro de Computos de Red.
+	Welcome User ${ORANGE}$USER${NC} to the Network Computing Center.
 
-    	Usted tiene las siguientes opciones:
+    	You have the following options:
 
 	${CYAN}1${NC} - ${ORANGE}Ping${NC}
 	${CYAN}2${NC} - ${ORANGE}Curl${NC}
-    	${CYAN}3${NC} - ${ORANGE}Ver interfaces de red${NC}
-    	${CYAN}4${NC} - ${ORANGE}Ver Netstat${NC}
-	${CYAN}5${NC} - ${ORANGE}Ver Netstat (established connections)${NC}
-	${CYAN}6${NC} - ${ORANGE}Ver route (tabla de enrutamiento)${NC}
+    	${CYAN}3${NC} - ${ORANGE}See network interfaces${NC}
+    	${CYAN}4${NC} - ${ORANGE}See Netstat${NC}
+	${CYAN}5${NC} - ${ORANGE}See Netstat (established connections)${NC}
+	${CYAN}6${NC} - ${ORANGE}See route (routing table)${NC}
 
-	${CYAN}99${NC} - ${ORANGE}Volver${NC}
+	${RED}99${NC} - ${ORANGE}Back${NC}
+
+	${RED}Q${NC} - ${ORANGE}Exit${NC}
+
 "
 
-read -rp "	Ingrese la opcion : " op
+read -rp "	Enter option : " op
 
 case $op in
-	1) # pingear
+	1) # pinging
 	clear
-	pingear
+	pingFunc
 	intro
-	iniciarScript
+	initCurrentScript
 	;;
 	2) # curl
 	clear
 	curlDir
 	intro
-	iniciarScript
+	initCurrentScript
 	;;
 	3) # ver interfaces de red
 	clear
-	verInterfaces
+	interfaces
 	intro
-	iniciarScript
+	initCurrentScript
 	;;
 	4) # ver netstat
 	clear
-	verNetstat
+	seeNetstat
 	intro
-	iniciarScript
+	initCurrentScript
 	;;
 	5) # ver netstat con Established
 	clear
 	netEstablished
 	intro
-	iniciarScript
+	initCurrentScript
 	;;
 	6) # ver route
 	clear
 	seeRoute
 	intro
-	iniciarScript
+	initCurrentScript
 	;;
 	99) # volver
 	clear
-	bash ./Init.sh
+	bash ./Init.sh || findResource Init.sh
 	;;
 	*)
 	clear
-	printf "	${RED}Error, por favor introduce una opción correcta.${NC}"
+	printf "	${RED}Error, please enter a valid option.${NC}"
 	intro
-	bash ../Init.sh
+	bash ../Init.sh || findResource Init.sh
 	;;
 esac
 
