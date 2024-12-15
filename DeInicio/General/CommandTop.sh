@@ -14,7 +14,7 @@ findResource() {
     local file="$1"
 	local USER_HOME="$HOME"
 
-    local fileType="$(echo "$file" | grep -oE '\.[^.]+$' | sed 's/\.//')"
+    #local fileType="$(echo "$file" | grep -oE '\.[^.]+$' | sed 's/\.//')"
     # Buscar archivos del mismo tipo que el archivo buscado
     #filesOfType=$(find "$USER_HOME" -type f -name "*.$fileType" 2>/dev/null)
     # Buscar el archivo específico dentro de la lista de archivos del mismo tipo
@@ -70,19 +70,19 @@ case $op in
 	 clear
 	 commandTopCPU
 	 intro
-	 bash CommandTop.sh || findResource CommandTop.sh
+	 sh $0 || findResource $0
 	;;
 	2)
 	 clear
 	 commandTopMEM
 	 intro
-	 bash CommandTop.sh || findResource CommandTop.sh
+	 sh $0 || findResource $0
 	;;
 	99)
 	 clear
-	 bash Funcionalidades.sh || findResource Funcionalidades.sh
+	 sh Funcionalidades.sh || findResource Funcionalidades.sh
 	;;
-	Q)
+	"Q" | "q")
 	 clear
 	 exit
 	;;
@@ -90,6 +90,6 @@ case $op in
 	 clear
 	 printf "	${RED}Error, please enter a valid option${NC}\n"
 	 intro
-	 bash CommandTop.sh
+	 bash $0 || findResource $0
 	;;
 esac

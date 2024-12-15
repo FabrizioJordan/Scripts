@@ -23,7 +23,7 @@ findResource() {
 }
 
 back(){
-	findResource System.sh
+	findResource $0
 }
 
 
@@ -52,10 +52,9 @@ echo -e "
 	${CYAN}9${NC} - ${ORANGE}Lists information about all available or specified block devices${NC}
 
 
+	${RED}99${NC} - ${ORANGE}Back${NC}
 
-	${CYAN}99${NC} - ${ORANGE}Back${NC}
-
-	${CYAN}Q${NC} - ${ORANGE}Exit${NC}
+	${RED}Q${NC} - ${ORANGE}Exit${NC}
 "
 
 read -rp "	Enter Option : " op
@@ -118,9 +117,9 @@ case $op in
 	;;
 	99)
 	 clear
-	 findResource Init.sh
+	 sh ../Init.sh || findResource Init.sh
 	;;
-	Q)
+	"Q" | "q")
 	 clear
 	 exit
 	;;
@@ -128,6 +127,6 @@ case $op in
 	 clear
 	 printf "	${RED}Error, please enter a valid option.${NC}"
 	 intro
-	 back
+	 sh $0 || findResource $0
 	;;
 esac

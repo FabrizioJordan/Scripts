@@ -45,7 +45,9 @@ echo -e "
 	${CYAN}2${NC} - ${ORANGE}Displays detailed information about the CPU${NC}
 
 
-	${CYAN}99${NC} - ${ORANGE}Volver${NC}
+	${RED}99${NC} - ${ORANGE}Volver${NC}
+
+	${RED}Q${NC} - ${ORANGE}Exit${NC}
 "
 
 read -rp "	Ingrese opcion : " op
@@ -63,6 +65,9 @@ case $op in
 	 clear
 	 bash System.sh
 	;;
+	"Q" | "q")
+	 clear
+	 exit
 	*)
 	 clear
 	 printf "	${RED}Error, por favor introduce una opción correcta.${NC}"

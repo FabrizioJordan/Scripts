@@ -24,7 +24,7 @@ findResource() {
 
 
 back(){
-	./Apps.sh || findResource Apps.sh
+	./$0 || findResource $0
 }
 
 intro(){
@@ -35,24 +35,24 @@ intro(){
 clear
 
 echo "
-	Bienvenido usuario ${ORANGE}$USER${NC} a la elección de Apps del Centro de Cómputos.
+	Welcome User ${ORANGE}$USER${NC} select an app to launch from the Computing Center.
 
-	Ingrese Opción:
+	Enter option:
 
 	${CYAN}1${NC} - ${ORANGE}VSCode${NC}
 	${CYAN}2${NC} - ${ORANGE}Chrome${NC}
-    	${CYAN}3${NC} - ${ORANGE}Configuración del Sistema${NC}
+    	${CYAN}3${NC} - ${ORANGE}System config (bspwm config file)${NC}
     	${CYAN}4${NC} - ${ORANGE}Bleachbit (sudo)${NC}
     	${CYAN}5${NC} - ${ORANGE}CPU-X${NC}
     	${CYAN}6${NC} - ${ORANGE}Joplin${NC}
     	${CYAN}7${NC} - ${ORANGE}Discord${NC}
 
-	${CYAN}99${NC} - ${ORANGE}Volver${NC}
+	${RED}99${NC} - ${ORANGE}Back${NC}
 
 	${RED}Q${NC} - ${ORANGE}Exit${NC}
 "
 
-read -rp "	Ingrese opcion : " op
+read -rp "	Enter option : " op
 
 case $op in
 	1)
@@ -60,11 +60,11 @@ case $op in
 	 back
 	;;
 	2)
-	 google-chrome
+	 xdg-open https://google.com
 	 back
 	;;
 	3)
-	 cinnamon-settings
+	 sudo nano ~/.config/bspwm/bspwmrc
 	 back
 	;;
 	4)
@@ -85,15 +85,15 @@ case $op in
 	;;
 	99)
 	 clear
-	 findResource Init.sh
+	 sh ../Init.sh || findResource Init.sh
 	;;
-	Q)
+	"Q" | "q")
 	 clear
 	 exit
 	;;
 	*)
 	 clear
-	 printf "	${RED}Error, por favor introduce una opción correcta.${NC}"
+	 printf "	${RED}Error, please enter a valid option.${NC}"
 	 intro
 	 back
 	;;

@@ -39,7 +39,7 @@ intro(){
 }
 
 initCurrentScript(){
-	sh Red.sh || findResource Red.sh
+	sh ./$0 || findResource $0
 }
 
 pingFunc(){
@@ -84,67 +84,70 @@ echo "
 
     	You have the following options:
 
-	${CYAN}1${NC} - ${ORANGE}Ping${NC}
-	${CYAN}2${NC} - ${ORANGE}Curl${NC}
-    	${CYAN}3${NC} - ${ORANGE}See network interfaces${NC}
-    	${CYAN}4${NC} - ${ORANGE}See Netstat${NC}
-	${CYAN}5${NC} - ${ORANGE}See Netstat (established connections)${NC}
-	${CYAN}6${NC} - ${ORANGE}See route (routing table)${NC}
+	${CYAN}0${NC} - ${ORANGE}Ping${NC}
+	${CYAN}1${NC} - ${ORANGE}Curl${NC}
+    	${CYAN}2${NC} - ${ORANGE}See network interfaces${NC}
+    	${CYAN}3${NC} - ${ORANGE}See Netstat${NC}
+	${CYAN}4${NC} - ${ORANGE}See Netstat (established connections)${NC}
+	${CYAN}5${NC} - ${ORANGE}See route (routing table)${NC}
 
 	${RED}99${NC} - ${ORANGE}Back${NC}
 
 	${RED}Q${NC} - ${ORANGE}Exit${NC}
-
 "
 
 read -rp "	Enter option : " op
 
 case $op in
-	1) # pinging
+	0) # pinging
 	clear
 	pingFunc
 	intro
 	initCurrentScript
 	;;
-	2) # curl
+	1) # curl
 	clear
 	curlDir
 	intro
 	initCurrentScript
 	;;
-	3) # ver interfaces de red
+	2) # ver interfaces de red
 	clear
 	interfaces
 	intro
 	initCurrentScript
 	;;
-	4) # ver netstat
+	3) # ver netstat
 	clear
 	seeNetstat
 	intro
 	initCurrentScript
 	;;
-	5) # ver netstat con Established
-	clear
-	netEstablished
-	intro
-	initCurrentScript
+	4) # ver netstat con Established
+	 clear
+	 netEstablished
+	 intro
+	 initCurrentScript
 	;;
-	6) # ver route
-	clear
-	seeRoute
-	intro
-	initCurrentScript
+	5) # ver route
+	 clear
+	 seeRoute
+	 intro
+	 initCurrentScript
 	;;
 	99) # volver
-	clear
-	bash ./Init.sh || findResource Init.sh
+	 clear
+	 bash ./Init.sh || findResource Init.sh
+	;;
+	"Q" | "q")
+	 clear
+	 exit
 	;;
 	*)
-	clear
-	printf "	${RED}Error, please enter a valid option.${NC}"
-	intro
-	bash ../Init.sh || findResource Init.sh
+	 clear
+	 printf "	${RED}Error, please enter a valid option.${NC}"
+	 intro
+	 initCurrentScript
 	;;
 esac
 
