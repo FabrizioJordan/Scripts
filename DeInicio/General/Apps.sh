@@ -24,7 +24,7 @@ findResource() {
 
 
 back(){
-	findResource Apps.sh
+	./Apps.sh || findResource Apps.sh
 }
 
 intro(){
@@ -34,7 +34,7 @@ intro(){
 
 clear
 
-echo -e "
+echo "
 	Bienvenido usuario ${ORANGE}$USER${NC} a la elección de Apps del Centro de Cómputos.
 
 	Ingrese Opción:
@@ -48,6 +48,8 @@ echo -e "
     	${CYAN}7${NC} - ${ORANGE}Discord${NC}
 
 	${CYAN}99${NC} - ${ORANGE}Volver${NC}
+
+	${RED}Q${NC} - ${ORANGE}Exit${NC}
 "
 
 read -rp "	Ingrese opcion : " op
@@ -84,6 +86,10 @@ case $op in
 	99)
 	 clear
 	 findResource Init.sh
+	;;
+	Q)
+	 clear
+	 exit
 	;;
 	*)
 	 clear

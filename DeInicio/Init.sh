@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 #a agregar:
 
 
@@ -35,7 +36,7 @@ findResource() {
     if [ -n "$result" ]; then
         bash "$result"
     else
-        echo "El archivo \"$file\" no se encontró o no se puede leer."
+        echo "	The file \"$file\" was not found or could not be read."
     fi
 }
 
@@ -44,7 +45,7 @@ cd $HOME/Scripts/DeInicio
 
 clear
 
-echo -e "
+echo "
 
 	Welcome User ${ORANGE}$USER${NC} to the computing center.
 
@@ -58,7 +59,9 @@ echo -e "
 	${CYAN}5${NC} - ${ORANGE}ABM Group
 	${CYAN}6${NC} - ${ORANGE}Network
 
-	${RED}99${NC} - ${ORANGE}Exit${NC}
+	${RED}99${NC} - ${ORANGE}Back${NC}
+
+	${RED}Q${NC} - ${ORANGE}Exit${NC}
 "
 
 	read -rp "	Enter option : " op
@@ -91,6 +94,10 @@ case $op in
 	99)
 	 cd $HOME
 	 clear
+	;;
+	Q)
+	 clear
+	 exit
 	;;
 	*)
 	 clear

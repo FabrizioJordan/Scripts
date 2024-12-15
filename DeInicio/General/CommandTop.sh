@@ -16,14 +16,19 @@ findResource() {
 
     local fileType="$(echo "$file" | grep -oE '\.[^.]+$' | sed 's/\.//')"
     # Buscar archivos del mismo tipo que el archivo buscado
-    filesOfType=$(find "$USER_HOME" -type f -name "*.$fileType" 2>/dev/null)
+    #filesOfType=$(find "$USER_HOME" -type f -name "*.$fileType" 2>/dev/null)
     # Buscar el archivo específico dentro de la lista de archivos del mismo tipo
-    result=$(echo "$filesOfType" | grep "/$file$")
+    #result=$(echo "$filesOfType" | grep "/$file$")
+
+		#with locate command (more quickly)
+	filesOfType=${locate -ib $file}
+	result=$(echo "$filesOfType" | grep "/$file$")
+
     # Verificar si se encontró el archivo antes de intentar ejecutarlo
     if [ -n "$result" ]; then
         bash "$result"
     else
-        echo "The file \"$file\" was not found or could not be read."
+        echo "	The file \"$file\" was not found or could not be read."
     fi
 }
 
@@ -34,17 +39,18 @@ intro(){
 }
 
 commandTopCPU(){
-clear
-./TopExpectCPU.expect
+	clear
+	./TopExpectCPU.expect
 }
 
 commandTopMEM(){
-clear
-./TopExpectMEM.expect
+	clear
+	./TopExpectMEM.expect
 }
 
 clear
-echo -e "
+echo "
+
  	Welcome User ${ORANGE}$USER${NC} to the computing top center.
 
     	You have the following options:
@@ -52,10 +58,9 @@ echo -e "
 	${CYAN}1${NC} - ${ORANGE}See top for %CPU${NC}
 	${CYAN}2${NC} - ${ORANGE}See top for %MEM${NC}
 
-	${CYAN}99${NC} - ${ORANGE}Back${NC}
+	${RED}99${NC} - ${ORANGE}Back${NC}
 
 	${RED}Q${NC} - ${ORANGE}Exit${NC}
-
 "
 
 read -rp " 	Enter option : " op
@@ -64,29 +69,27 @@ case $op in
 	1)
 	 clear
 	 commandTopCPU
-	 inicio
-	 bash CommandTop.sh
+	 intro
+	 bash CommandTop.sh || findResource CommandTop.sh
 	;;
 	2)
 	 clear
 	 commandTopMEM
-	 inicio
-	 bash CommandTop.sh
+	 intro
+	 bash CommandTop.sh || findResource CommandTop.sh
 	;;
 	99)
 	 clear
-	 inicio
-	 bash Funcionalidades.sh
+	 bash Funcionalidades.sh || findResource Funcionalidades.sh
 	;;
 	Q)
 	 clear
 	 exit
+	;;
 	*)
 	 clear
-	 printf "	${RED}Error, por favor introduce una opción correcta${NC}\n"
-	 inicio
+	 printf "	${RED}Error, please enter a valid option${NC}\n"
+	 intro
 	 bash CommandTop.sh
 	;;
 esac
-
-

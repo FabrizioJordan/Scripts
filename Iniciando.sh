@@ -13,9 +13,9 @@ findResource() {
     if [ -n "$result" ]; then
         bash "$result"
     else
-        echo "El archivo \"$file\" no se encontró o no se puede leer."
+        echo "	The file \"$file\" was not found or could not be read."
     fi
 }
 
-findResource Pregunta.sh
+./Pregunta.sh || findResource Pregunta.sh
 

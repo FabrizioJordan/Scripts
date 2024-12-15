@@ -1,26 +1,34 @@
 #!/bin/bash
+clear
 
-echo ""
+echo "
+	 What script what do you want to start?
+	 Neofetch.sh [n]
+	 Init.sh [i] (init starts the main script)
+	 No one (Quit) [q]
 
-read -p "	Do you want to start the script Neofetch.sh [y/n] " option
+	 "
+
+read -rp "	 Enter option : " option
+
 case $option in
-	y)
+	i)
 	 clear
-
-	 bash $HOME/Scripts/exeNeofetch.sh
-	
-	 echo ""
-	
 	 bash $HOME/Scripts/exeInit.sh
-
-	clear
+	 echo ""
+	 clear
 	;;
 	n)
-	clear
-	 bash $HOME/Scripts/exeInit.sh
-	clear
+ 	 clear
+	 bash $HOME/Scripts/exeNeofetch.sh
+	 echo ""
+	 clear
+	;;
+	q)
+	 clear
+	 exit
 	;;
 	*)
-	bash $HOME/Scripts/Pregunta.sh
+	 bash $HOME/Scripts/Pregunta.sh
 	;;
 esac
