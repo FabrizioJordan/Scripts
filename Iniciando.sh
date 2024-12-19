@@ -17,5 +17,7 @@ findResource() {
     fi
 }
 
+cd $HOME/Scripts
+
 sh ./Pregunta.sh || findResource Pregunta.sh
 
