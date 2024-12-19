@@ -12,19 +12,19 @@ echo "
 read -rp "	 Enter option : " option
 
 case $option in
-	i)
+	"i" | "I")
 	 clear
 	 bash $HOME/Scripts/exeInit.sh
 	 echo ""
 	 clear
 	;;
-	n)
+	"n" | "N")
  	 clear
 	 bash $HOME/Scripts/exeNeofetch.sh
 	 echo ""
 	 clear
 	;;
-	q)
+	"q" | "Q")
 	 clear
 	 exit
 	;;

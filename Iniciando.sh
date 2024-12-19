@@ -17,5 +17,5 @@ findResource() {
     fi
 }
 
-./Pregunta.sh || findResource Pregunta.sh
+sh ./Pregunta.sh || findResource Pregunta.sh
 
