@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-#a agregar:
-
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
@@ -45,11 +42,10 @@ cd $HOME/Scripts/DeInicio
 
 clear
 
-echo "
-
+echo -e "
 	Welcome User ${ORANGE}$USER${NC} to the computing center.
 
-		You have the following options:
+	You have the following options:
 
 	${CYAN}0${NC} - ${ORANGE}Neofetch
 	${CYAN}1${NC} - ${ORANGE}Apps
@@ -59,9 +55,9 @@ echo "
 	${CYAN}5${NC} - ${ORANGE}ABM Group
 	${CYAN}6${NC} - ${ORANGE}Network
 
-	${RED}99${NC} - ${ORANGE}Back${NC}
+	${RED}99${NC} - ${RED}Back${NC}
 
-	${RED}Q${NC} - ${ORANGE}Exit${NC}
+	${RED}Q${NC} - ${RED}Exit${NC}
 "
 
 	read -rp "	Enter option : " op
@@ -74,22 +70,22 @@ case $op in
 	 bash $HOME/Scripts/DeInicio/Init.sh
 	;;
 	1)
-	 findResource Apps.sh
+	 sh ./General/Apps.sh | findResource Apps.sh
 	;;
 	2)
-	 findResource System.sh
+	 sh ./General/System.sh | findResource System.sh
 	;;
 	3)
-	 findResource Funcionalidades.sh
+	 sh ./General/Funcionalidades.sh | findResource Funcionalidades.sh
 	;;
 	4)
-	 bash ./ABMs/ABM_usuario.sh
+	 sh ./ABMs/ABM_usuario.sh | findResource ABM_usuario.sh
 	;;
 	5)
-	 bash ./ABMs/ABM_grupo.sh
+	 sh ./ABMs/ABM_grupo.sh | findResource ABM_grupo.sh
 	;;
 	6)
-	 bash ./General/Red.sh
+	 sh ./General/Red.sh | findResource Red.sh
 	;;
 	99)
 	 cd $HOME
@@ -103,6 +99,6 @@ case $op in
 	 clear
 	 printf "	${RED}Error, please enter a valid option.${NC}"
 	 intro
-	 bash Init.sh
+	 sh $0
 	;;
 esac
