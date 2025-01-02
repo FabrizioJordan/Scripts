@@ -5,18 +5,24 @@
 
 Si los querés probar:
 
-1. git clone https://github.com/FabrizioJordan/Scripts
+```
+git clone https://github.com/FabrizioJordan/Scripts
 
-2. cd Scripts
+cd Scripts
 
-3. chmod +x Iniciando.sh
+chmod +x Iniciando.sh
 
-4. sudo sh Iniciando.sh
+sudo sh Iniciando.sh
+```
 
+Todo en uno: 
+```
+git clone https://github.com/FabrizioJordan/Scripts && cd Scripts && chmod +x Iniciando.sh && sudo sh Iniciando.sh
+```
 Listo!!
 
 
-Para recordar:
+## Para recordar:
 
 Los scripts cada día los paso al inglés.
 
